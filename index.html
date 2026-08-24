@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfect Nails — Book an Appointment</title>
+<meta name="description" content="Book your nail and pedicure appointment online at Perfect Nails. Gel, polish, pedicures, and more — see real-time availability and schedule in under a minute.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <span class="logo">Perfect Nails</span>
+    <a href="#book" class="header-cta">Book now</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Nails &amp; Pedicures</p>
+      <h1>Perfect Nails</h1>
+      <p class="hero-sub">Gel, polish, and pedicures — see real availability and book in under a minute.</p>
+      <a href="#book" class="btn-primary">Book an appointment</a>
+    </div>
+    <div class="swatch-row" aria-hidden="true">
+      <span class="swatch" style="--c:#B5495B"></span>
+      <span class="swatch" style="--c:#C9A66B"></span>
+      <span class="swatch" style="--c:#7A5C61"></span>
+      <span class="swatch" style="--c:#D8A7B1"></span>
+      <span class="swatch" style="--c:#5C2A3E"></span>
+      <span class="swatch" style="--c:#E8C4A2"></span>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services">
+    <div class="wrap">
+      <h2>What we do</h2>
+      <ul class="service-list">
+        <li><span class="dot" style="--c:#B5495B"></span>Gel manicure</li>
+        <li><span class="dot" style="--c:#D8A7B1"></span>Classic polish</li>
+        <li><span class="dot" style="--c:#5C2A3E"></span>Pedicure</li>
+        <li><span class="dot" style="--c:#C9A66B"></span>Gel &amp; pedicure combo</li>
+        <li><span class="dot" style="--c:#7A5C61"></span>Nail art / design</li>
+        <li><span class="dot" style="--c:#E8C4A2"></span>Acrylic full set</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="book" class="booking">
+    <div class="wrap">
+      <h2>Book your appointment</h2>
+      <p class="booking-sub">Pick a service and date to see real open times.</p>
+
+      <form id="booking-form" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567">
+        </div>
+
+        <div class="field">
+          <label for="service">What are you getting done?</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Choose a service</option>
+            <option value="Gel manicure" data-type="mani">Gel manicure</option>
+            <option value="Classic polish" data-type="mani">Classic polish</option>
+            <option value="Pedicure" data-type="pedi">Pedicure</option>
+            <option value="Gel & pedicure combo" data-type="pedi">Gel &amp; pedicure combo</option>
+            <option value="Nail art / design" data-type="mani">Nail art / design</option>
+            <option value="Acrylic full set" data-type="mani">Acrylic full set</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="field" id="slots-field">
+          <p class="slots-hint" id="slots-hint">Choose a service and date above to see open times.</p>
+          <fieldset id="slots-fieldset" class="slots-fieldset hidden">
+            <legend>Choose a time</legend>
+            <div class="slots-legend">
+              <span class="legend-name" id="worker1-label"></span>
+              <span class="legend-name" id="worker2-label"></span>
+            </div>
+            <div id="slots-grid" class="slots-grid"></div>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything we should know? <span class="optional">(optional)</span></label>
+          <textarea id="notes" name="notes" rows="3" placeholder="e.g. shape, color preference, allergies"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submit-btn" disabled>Request appointment</button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Perfect Nails</p>
+    <p class="fine-print">Times shown update live as other customers book.</p>
+  </div>
+</footer>
+
+<!-- EmailJS (sends the notification email) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- Firebase + booking logic (module, loads Firestore for live availability) -->
+<script type="module" src="script.js"></script>
+</body>
+</html>
